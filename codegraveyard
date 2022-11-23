@@ -1,0 +1,18 @@
+//FROM KYLE
+// find the particular fruit from the database
+Fruit.findById(id, (err, fruit) => {
+    // render the template with the data from the database
+    res.render("fruits/show.ejs", { fruit })
+})
+//FROM KYLE
+// SHOW ROUTE
+app.get("/fruits/:id", (req, res) => {
+    // get the id from params
+    const id = req.params.id
+
+    // find the particular fruit from the database
+    Fruit.findById(id, (err, fruit) => {
+        // render the template with the data from the database
+        res.render("fruits/show.ejs", { fruit })
+    })
+})
