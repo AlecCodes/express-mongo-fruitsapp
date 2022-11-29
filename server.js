@@ -7,6 +7,7 @@ const mongoose = require("mongoose")
 
 const Fruit = require('./models/fruit')
 const FruitRouter = require('./controllers/fruit')
+const UserRouter = require('./controllers/user')
 
 const app = express();
 
@@ -18,6 +19,11 @@ app.use(morgan("tiny"))
 app.use(methodOverride("_method"))
 app.use("/static",express.static("public"))
 app.use(FruitRouter)
+app.use(UserRouter)
+
+app.get("/", (req,res)=>{
+    res.render("index.ejs")
+})
 
 
 
