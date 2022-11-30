@@ -4,12 +4,21 @@ const Fruit = require('../models/fruit') //bring in fruit
 ////////////////////////
 //Create router
 ////////////////////////
-
 const router = express.Router()
 
-////////////////////////
-//Actual router
-////////////////////////
+
+///////////////////////////
+//ROUTER MIDDLEWARE - This is where we check if user is logged into an active session
+///////////////////////////
+router.use((req,res,next)=>{
+    if(req.session.loggedIn){
+        next();
+    } else {
+        res.redirect("/user/login")
+    }
+})
+
+
 ////////////////////////////////////
 //ROUTES
 ////////////////////////////////////
